@@ -23,7 +23,9 @@ RUN docker-php-ext-install pdo_mysql
 
 WORKDIR /scrumonline
 
-COPY --from=builder /scrumonline /scrumonline 
+COPY --from=builder /scrumonline /scrumonline
+
+COPY newhome.php /scrumonline/src/templates/home.php
 
 RUN rm -r /var/www/html && \
   ln -s /scrumonline/src/ /var/www/html
